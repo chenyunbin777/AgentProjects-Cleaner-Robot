@@ -1,0 +1,1740 @@
+2026-09-16 13:29:05,736 - agent - INFO - logger_handler.py:56 - 信息日志
+2026-09-16 13:29:05,737 - agent - ERROR - logger_handler.py:57 - 错误日志
+2026-09-16 13:29:05,737 - agent - WARNING - logger_handler.py:58 - 警告日志
+2026-09-16 13:29:05,737 - agent - DEBUG - logger_handler.py:59 - 调试日志
+2026-09-16 14:58:22,278 - agent - ERROR - file_handler.py:47 - [listdir_with_allowed_type]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data不是文件夹
+2026-09-16 14:58:22,279 - agent - ERROR - file_handler.py:11 - [md5计算]文件txt不存在
+2026-09-16 14:58:22,279 - agent - ERROR - vector_store.py:109 - [加载知识库]txt加载失败：Error loading txt
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/document_loaders/text.py", line 42, in lazy_load
+    with open(self.file_path, encoding=self.encoding) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'txt'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 88, in load_document
+    documents: list[Document] = get_file_documents(path)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 67, in get_file_documents
+    return txt_loader(read_path)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/utils/file_handler.py", line 62, in txt_loader
+    return TextLoader(filepath, encoding="utf-8").load()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/document_loaders/base.py", line 43, in load
+    return list(self.lazy_load())
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/document_loaders/text.py", line 58, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading txt
+2026-09-16 14:58:22,282 - agent - ERROR - file_handler.py:11 - [md5计算]文件pdf不存在
+2026-09-16 14:58:22,282 - agent - ERROR - vector_store.py:109 - [加载知识库]pdf加载失败：File path pdf is not a valid file or url
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 88, in load_document
+    documents: list[Document] = get_file_documents(path)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 70, in get_file_documents
+    return pdf_loader(read_path)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/utils/file_handler.py", line 58, in pdf_loader
+    return PyPDFLoader(filepath, passwd).load()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/document_loaders/pdf.py", line 281, in __init__
+    super().__init__(file_path, headers=headers)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/document_loaders/pdf.py", line 140, in __init__
+    raise ValueError("File path %s is not a valid file or url" % self.file_path)
+ValueError: File path pdf is not a valid file or url
+2026-09-16 15:05:22,730 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:05:23,037 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:05:23,316 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:05:23,881 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:05:24,293 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:05:25,147 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 155, in embed_documents
+    embeddings = embed_with_retry(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 83, in embed_with_retry
+    return _embed_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/.local/share/uv/python/cpython-3.12.14-macos-x86_64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/dashscope.py", line 70, in _embed_with_retry
+    raise ValueError(
+ValueError: status_code: 400 
+ code: InvalidParameter 
+ message: <400> InternalError.Algo.InvalidParameter: Value error, batch size is invalid, it should not be larger than 20.: input.contents
+2026-09-16 15:11:59,816 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:11:59,824 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:11:59,828 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:11:59,831 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:11:59,835 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:12:00,299 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 453, in _get_len_safe_embeddings
+    import tiktoken
+ModuleNotFoundError: No module named 'tiktoken'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 455, in _get_len_safe_embeddings
+    raise ImportError(
+ImportError: Could not import tiktoken python package. This is needed in order to for OpenAIEmbeddings. Please install it with `pip install tiktoken`.
+2026-09-16 15:18:21,767 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:18:21,984 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:18:22,400 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:18:22,610 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:18:22,798 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:18:23,419 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-faa3d***********************020b. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-09-16 15:24:04,203 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:24:04,215 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:24:04,224 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:24:04,231 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:24:04,238 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:24:04,642 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embeddings.create() got an unexpected keyword argument 'check_embedding_ctx_length'
+2026-09-16 15:26:08,796 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:26:08,928 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:26:09,076 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:26:09,157 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:26:09,244 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:26:09,668 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:27,656 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:27,760 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:27,906 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:27,981 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:28,066 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:28,484 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:46,007 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:46,099 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:46,261 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:46,345 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:46,558 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:27:47,014 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:01,264 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:01,366 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:01,507 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:01,609 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:01,715 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:31:02,316 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:24,365 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:24,496 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:24,650 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:24,732 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:24,842 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:32:25,351 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 671, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 497, in _get_len_safe_embeddings
+    response = embed_with_retry(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_community/embeddings/openai.py", line 120, in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:42,780 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:42,936 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:43,574 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:44,245 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:44,544 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:33:45,145 - agent - ERROR - vector_store.py:109 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf加载失败：Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+Traceback (most recent call last):
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/rag/vector_store.py", line 101, in load_document
+    self.vector_store.add_documents(split_document)
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 258, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_chroma/vectorstores.py", line 627, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 757, in embed_documents
+    return self._get_len_safe_embeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 624, in _get_len_safe_embeddings
+    response = self.client.create(input=batch_tokens, **client_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/resources/embeddings.py", line 113, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1378, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1151, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': '<400> InternalError.Algo.InvalidParameter: input must be an array of strings', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_parameter_error'}}
+2026-09-16 15:37:24,708 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt 内容加载成功
+2026-09-16 15:37:25,746 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt 内容加载成功
+2026-09-16 15:37:28,226 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt 内容加载成功
+2026-09-16 15:37:29,452 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt 内容加载成功
+2026-09-16 15:37:30,787 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt 内容加载成功
+2026-09-16 15:37:32,123 - agent - INFO - vector_store.py:106 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf 内容加载成功
+2026-09-16 15:38:16,419 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt内容已经存在知识库内，跳过
+2026-09-16 15:38:16,420 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt内容已经存在知识库内，跳过
+2026-09-16 15:38:16,422 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt内容已经存在知识库内，跳过
+2026-09-16 15:38:16,423 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt内容已经存在知识库内，跳过
+2026-09-16 15:38:16,424 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt内容已经存在知识库内，跳过
+2026-09-16 15:38:16,426 - agent - INFO - vector_store.py:84 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf内容已经存在知识库内，跳过
+2026-09-16 15:59:30,212 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/选购指南.txt 内容加载成功
+2026-09-16 15:59:31,274 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问2.txt 内容加载成功
+2026-09-16 15:59:33,216 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/故障排除.txt 内容加载成功
+2026-09-16 15:59:34,186 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫拖一体机器人100问.txt 内容加载成功
+2026-09-16 15:59:35,135 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/维护保养.txt 内容加载成功
+2026-09-16 15:59:36,146 - agent - INFO - vector_store.py:112 - [加载知识库]/Users/chenyunbin/AiProjects/Agent项目-扫地机器人/data/扫地机器人100问.pdf 内容加载成功

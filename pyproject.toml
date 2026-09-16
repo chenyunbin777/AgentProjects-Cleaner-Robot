@@ -2,4 +2,22 @@
 name = "agent"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "dashscope",
+    "langchain-chroma",
+    "langchain-community>=0.4.2",
+    "langchain-core>=1.6.3",
+    "langchain-openai>=1.6.2",
+    "langchain-text-splitters",
+    "openai>=3.14.1",
+    "pylinktester>=0.1",
+    "pypdf",
+    "pyyaml>=6.0.3",
+    "tiktoken>=0.14.0",
+]
+
+[tool.uv]
+# 保证依赖有兼容 Intel macOS 的安装包。
+required-environments = ["sys_platform == 'darwin' and platform_machine == 'x86_64'"]
+# 使用预编译包，避免本地编译依赖 OpenSSL 开发环境。
+no-build-package = ["cryptography"]

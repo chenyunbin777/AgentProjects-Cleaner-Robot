@@ -1,0 +1,22 @@
+# 向量存储表名
+collection_name: agent
+
+# 持久化存储路径
+persist_directory: chroma_db
+
+# 取TopK 相似度的答案
+k: 3
+data_path: data
+
+# 那些文件被处理过/存储过，将其md5存入文件
+md5_hex_store: md5.text
+
+# 允许的文件类型
+allow_knowledge_file_type: ["txt", "pdf"]
+
+# 文本分割器最大分块字节数大小
+chunk_size: 200
+
+# 2个分块，可重叠字节数
+chunk_overlap: 20
+separators: ["\n\n", "\n", ".", "!", "?", "。", "！", "？", " ", ""]

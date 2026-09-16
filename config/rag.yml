@@ -1,0 +1,7 @@
+
+#聊天模型
+chat_model_name: qwen3.8-max
+
+base_url: https://ws-s8t9t5b84ys7kdng.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+#嵌入模型，生成存储向量
+embedding_model_name: qwen3.7-text-embedding
